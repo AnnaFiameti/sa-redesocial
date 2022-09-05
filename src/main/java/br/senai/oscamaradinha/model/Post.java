@@ -17,7 +17,7 @@ public class Post {
     @NotNull
     private String nome;
     @Size(max = 15)
-    private String professor;
+    private String materia;
     @Size(max = 100)
     private Date dataAtividade;
     @Size(max = 30)
@@ -35,11 +35,11 @@ public class Post {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getProfessor() {
-        return professor;
+    public String getMateria() {
+        return materia;
     }
-    public void setProfessor(String professor) {
-        this.professor = professor;
+    public void setMateria(String materia) {
+        this.materia = materia;
     }
     public Date getDataAtividade() {
         return dataAtividade;
@@ -59,7 +59,7 @@ public class Post {
         return "Post:" +
                 "Id: " + id +
                 "Nome: " + nome +
-                "Professor: " + professor +
+                "Materia: " + materia +
                 "DataAtividade: " + dataAtividade +
                 "Descricao: " + descricao;
     }

@@ -5,6 +5,8 @@ import br.senai.oscamaradinha.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class PostServiceimpl implements PostService {
@@ -14,6 +16,11 @@ public class PostServiceimpl implements PostService {
 
     @Override
     public Post findByNome(String nome){
+        return null;
+    }
+
+    @Override
+    public List<Post> findAll() {
         return null;
     }
 

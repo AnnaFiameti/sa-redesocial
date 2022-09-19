@@ -17,7 +17,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario create(Usuario usuario) {
-        usuario.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));
+        usuario.setPassword(usuario.getPassword());
         return usuarioRepository.save(usuario);
     }
 
@@ -50,26 +50,8 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioRepository.deleteById(id);
             return usuarioRepository.findById(id).isEmpty();
         } catch (Exception e){
+            System.out.println("Erro: " + e.getMessage());
             return false;
         }
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByUsername(username);
-        if (usuario == null){
-            throw new UsernameNotFoundException("Usuario não encontrado");
-        }
-
-        UserDetails user = User.withUsername(usuario.getUsername())
-                .password(usuario.getPassword())
-                .authorities(List.of()).build();
-        return user;
-    }
-    private class BCryptPasswordEncoder {
-    }
-    private class UserDetails {
-    }
-    private class UsernameNotFoundException extends Exception {
     }
 }

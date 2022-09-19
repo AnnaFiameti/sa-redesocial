@@ -1,9 +1,8 @@
 package br.senai.oscamaradinha.controller;
 
-import antlr.ASTFactory;
+
 import br.senai.oscamaradinha.model.Usuario;
-import br.senai.oscamaradinha.service.PostService;
-import br.senai.oscamaradinha.service.UsuarioService;
+import br.senai.oscamaradinha.service.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class IndexController {
 
     @Autowired
-    private PostService postService;
+    private UsuarioServiceImpl usuarioService;
 
     @GetMapping("/")
     public String index(){
@@ -38,7 +37,7 @@ public class IndexController {
 
     @PostMapping("/cadastrar")
     public String save(Usuario usuario, Model model) {
-        UsuarioService.create(usuario);
+        usuarioService.create(usuario);
         model.addAttribute("usuario", usuario);
         model.addAttribute("isSaved", true);
         return "login";
